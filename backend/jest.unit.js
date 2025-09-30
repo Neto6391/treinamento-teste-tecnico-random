@@ -2,13 +2,13 @@ const sharedConfig = require("./jest.config");
 
 module.exports = {
   ...sharedConfig,
-  coverageDirectory: "coverage",
+  testRegex: ".*\\.test\\.ts$",
+
   coverageReporters: ["text", "lcov", "cobertura"],
   collectCoverageFrom: [
     "src/**/*.ts",
     "!*/node_modules/**",
     "!<rootDir>/src/main.ts",
-    "!<rootDir>/src/modules/database/database.service.ts",
   ],
   reporters: [
     "default",
@@ -25,10 +25,6 @@ module.exports = {
       {
         errorAfterMs: 1000,
         warnAfterMs: 500,
-        logLevel: "warn",
-        maxItems: 5,
-        jsonReportPath: "performance-report.json",
-        csvReportPath: "performance-report.csv",
       },
     ],
   ],

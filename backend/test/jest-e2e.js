@@ -1,10 +1,9 @@
-const sharedConfig = require("../jest.config");
+const sharedConfig = require("../jest.config"); // Note o ../ para subir um nível
 
 module.exports = {
-  ...sharedConfig, // Aplica as configurações herdadas
-  rootDir: ".", // O rootDir aqui é a pasta 'test'
-  testRegex: ".e2e-spec.ts$",
+  ...sharedConfig,
   moduleNameMapper: {
     "^src/(.*)$": "<rootDir>/../src/$1",
   },
+  testRegex: ".*\\.e2e-spec\\.ts$",
 };
