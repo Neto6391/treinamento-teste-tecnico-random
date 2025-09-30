@@ -2,7 +2,7 @@ const sharedConfig = require("./jest.config");
 
 module.exports = {
   ...sharedConfig,
-  testRegex: ".*\\.test\\.ts$",
+  testRegex: ".*\\.spec\\.ts$",
 
   coverageReporters: ["text", "lcov", "cobertura"],
   collectCoverageFrom: [
