@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_PATH: "/app/data.sqlite"
+    volumes:
+      - ./backend/data.sqlite:/app/data.sqlite
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:4200"
+    environment:
+      API_BASE: "http://localhost:3000/v1"
+    volumes:
+      - ./frontend:/usr/src/app
