@@ -12,20 +12,21 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Backend deps
+
+      - name: Install Backend Dependencies
+        working-directory: ./backend
+        run: npm ci
+
+      - name: Run Backend Tests
+        working-directory: ./backend
         run: |
-          cd backend
-          npm ci
-      - name: Backend tests
-        run: |
-          cd backend
           npm test -- --passWithNoTests=false
           npm run test:e2e
-      - name: Frontend deps
-        run: |
-          cd frontend
-          npm ci
-      - name: Frontend tests
-        run: |
-          cd frontend
-          npm test -- --watch=false --browsers=ChromeHeadless
+
+      - name: Install Frontend Dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Run Frontend Tests
+        working-directory: ./frontend
+        run: npm test -- --watch=false --browsers=ChromeHeadless
